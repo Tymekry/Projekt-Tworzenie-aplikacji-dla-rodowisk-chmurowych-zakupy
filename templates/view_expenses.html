@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Przegląd Wydatków</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %} <!-- Dodaj wspólny nagłówek -->
+    <div class="container">
+        <h2 class="mt-5">Twoje Wydatki</h2>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Kwota</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.name }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <td>
+                        <a href="/edit_expense/{{ expense.id }}" class="btn btn-primary btn-sm">Edytuj</a>
+                        <a href="/delete_expense/{{ expense.id }}" class="btn btn-danger btn-sm">Usuń</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
